@@ -10,6 +10,7 @@ def loadProperties() {
         echo "${id_address}"
         echo "ip address: ${properties.build_ip_address} : ${properties.build_port}"
     }
+}
 
 pipeline {
     agent any
