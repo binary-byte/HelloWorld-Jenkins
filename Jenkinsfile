@@ -6,7 +6,7 @@ def loadProperties() {
         properties = readProperties file: 'branch-specific.properties'
         echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER}"
         id_address = properties['build_ip_address']
-        echo ${id_address}
+        echo "${id_address}"
         echo "ip address: ${properties.build_ip_address} : ${properties.build_port}"
     }
 }
