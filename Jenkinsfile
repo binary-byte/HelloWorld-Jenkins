@@ -20,6 +20,12 @@ pipeline {
     post {
         always {
             echo 'Pipeline has finished!'
+        } 
+        success {
+            echo 'Pipeline was successful...'
+        }
+        failure {
+            echo 'Pipeline failed.'
         }
     }
 }
