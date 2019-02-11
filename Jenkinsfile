@@ -17,7 +17,8 @@ pipeline {
     stages {
         stage ('Setup') {
             steps {
-              loadProperties()
+                cleanWs()
+                loadProperties()
             }
         }
 
