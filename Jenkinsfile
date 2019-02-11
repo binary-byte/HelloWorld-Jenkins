@@ -8,7 +8,7 @@ def loadProperties() {
 
         id_address = properties['build_ip_address']
         echo "${id_address}"
-        echo "ip address: ${properties.build_ip_address} : ${properties.build_port}"
+        echo "ip address: ${properties.build.ip_address} : ${properties.build.port}"
     }
 }
 
@@ -17,7 +17,6 @@ pipeline {
     stages {
         stage ('Setup') {
             steps {
-                cleanWs()
                 loadProperties()
             }
         }
@@ -43,6 +42,7 @@ pipeline {
     post {
         always {
             echo 'Pipeline has finished!'
+            cleanWs()
         } 
         success {
             echo 'Pipeline was successful...'
