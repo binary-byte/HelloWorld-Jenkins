@@ -2,9 +2,8 @@ def properties = null
 
 def loadProperties() {
     node {
-        checkout scm
-         properties = readProperties file: 'branch-specific.properties'
-                    echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER}"
+        properties = readProperties file: 'branch-specific.properties'
+        echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER}"
     }
 }
 
