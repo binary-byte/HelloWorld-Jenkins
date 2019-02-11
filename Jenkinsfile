@@ -19,13 +19,13 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'Building...'
-                echo "ip address: ${build_ip_address}:${build_port}"
+                echo "ip address: ${properties.build_ip_address}:${properties.build_port}"
             }
         }
         stage ('Test') {
             steps {
                 echo 'Testing...'
-                echo "ip address: ${test_ip_address}:${test_port}"
+                echo "ip address: ${properties.test_ip_address}:${properties.test_port}"
             }
         }
         stage ('Deployment') {
