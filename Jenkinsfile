@@ -3,6 +3,7 @@ def id_address
 
 def loadProperties() {
     node {
+        checkout scm
         properties = readProperties file: 'branch-specific.properties'
         echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER}"
         id_address = properties['build_ip_address']
