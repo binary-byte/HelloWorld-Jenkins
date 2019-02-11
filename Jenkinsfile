@@ -1,9 +1,10 @@
-def properties = null
+def properties
 
 def loadProperties() {
     node {
         properties = readProperties file: 'branch-specific.properties'
         echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER}"
+        echo "ip address: ${properties.build_ip_address} : ${properties.build_port}"
     }
 }
 
@@ -19,13 +20,11 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'Building...'
-                echo "ip address: ${properties.build_ip_address}:${properties.build_port}"
             }
         }
         stage ('Test') {
             steps {
                 echo 'Testing...'
-                echo "ip address: ${properties.test_ip_address}:${properties.test_port}"
             }
         }
         stage ('Deployment') {
