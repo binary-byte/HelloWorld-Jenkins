@@ -1,16 +1,18 @@
 def fileProperties
-def jsonProperties
+def ymalProperties
 
 def loadProperties() {
     node {
         checkout scm
         fileProperties = readProperties file: 'branch-specific.properties'
-        jsonProperties = readJSON file: 'branch-specific.properties'
+        ymalProperties = readYaml file: 'branch-specific.yaml'
         echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER}"
 
         id_address = fileProperties['build.ip_address']
+        echo 'reading file...'
         echo "${id_address}"
-        echo "ip address: ${jsonProperties.build.ip_address} : ${jsonProperties.build.port}"
+        echo 'reading ymal...'
+        echo "ip address: ${ymalProperties.env.build.ip_address} : ${ymalProperties.env.build.port}"
     }
 }
 

@@ -1,0 +1,9 @@
+application:
+  name:'Hello-Application'
+env:
+  build:
+    ip_address: '127.0.0.1'
+    port: '8080'
+  test:
+    ip_address: '127.0.0.1'
+    port: '9090'
