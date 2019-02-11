@@ -4,10 +4,9 @@ def loadProperties() {
     node {
         checkout scm
         properties = readProperties file: 'branch-specific.properties'
-        echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER} ${properties.application_name}"
-        echo "ip address: ${properties.test_ip_address} : ${properties.test_port}"       
+        echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER}"
+        echo "ip address: ${properties.build_ip_address} : ${properties.build_port}"
     }
-}
 
 pipeline {
     agent any
