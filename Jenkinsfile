@@ -1,14 +1,16 @@
-def properties
+def fileProperties
+def jsonProperties
 
 def loadProperties() {
     node {
         checkout scm
-        properties = readProperties file: 'branch-specific.properties'
+        fileProperties = readProperties file: 'branch-specific.properties'
+        jsonProperties = readJSON file: 'branch-specific.properties'
         echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER}"
 
-        id_address = properties['build.ip_address']
+        id_address = fileProperties['build.ip_address']
         echo "${id_address}"
-        echo "ip address: ${properties.build.ip_address} : ${properties.build.port}"
+        echo "ip address: ${jsonProperties.build.ip_address} : ${jsonProperties.build.port}"
     }
 }
 
