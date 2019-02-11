@@ -1,14 +1,19 @@
-def properties
+def properties = null
+
+def loadProperties() {
+    node {
+        checkout scm
+         properties = readProperties file: 'branch-specific.properties'
+                    echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER}"
+    }
+}
 
 pipeline {
     agent any
     stages {
         stage ('Init') {
             steps {
-                script {
-                    properties = readProperties file: 'branch-specific.properties'
-                    echo "Setting up build ${JOB_NAME} # ${BUILD_NUMBER}"
-                }
+              loadProperties()
             }
         }
 
